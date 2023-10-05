@@ -14,7 +14,6 @@ export type UserTabNavigatorList={
     Home : undefined;
     Info : undefined;
     Setting : undefined;
-    Detail:undefined;
 }
 const UserTabNavigator = ({globalProps}:UserTabProp)=>{
     const Tab = createBottomTabNavigator<UserTabNavigatorList>();

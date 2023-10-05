@@ -15,7 +15,11 @@ const App=()=> {
   }
   useEffect(()=>{
   })
-  return !isLogin?
+  return <UserTabNavigator globalProps={globalProps}/>
+  //<AuthStackNavigator globalProps={globalProps}/>
+  // <AdminTabNavigator globalProps={globalProps}/>
+
+  !isLogin?
         <AuthStackNavigator globalProps={globalProps}/>
         :
         isAdmin?
