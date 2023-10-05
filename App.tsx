@@ -1,20 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import AdminTabNavigator from "./src/navigations/admin-tab-navigation";
+import AuthStackNavigator from "./src/navigations/auth-stack-navigation";
+import UserTabNavigator from "./src/navigations/user-tab-navigation";
+export type GlobalProps= {
+  setIsLogin: Dispatch<SetStateAction<boolean>>;
+  setIsAdmin: Dispatch<SetStateAction<boolean>>;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const App=()=> {
+  const [isLogin,setIsLogin] = useState(true);
+  const [isAdmin,setIsAdmin] = useState(true);
+  const globalProps : GlobalProps = {
+    setIsLogin,
+    setIsAdmin
+  }
+  useEffect(()=>{
+  })
+  return !isLogin?
+        <AuthStackNavigator globalProps={globalProps}/>
+        :
+        isAdmin?
+          <AdminTabNavigator globalProps={globalProps}/>
+          :
+          <UserTabNavigator globalProps={globalProps}/>
+}
+export default App;
