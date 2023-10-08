@@ -13,41 +13,38 @@ export type AdminTabNavigatorList={
 export interface AdminTabProp {
     globalProps: GlobalProps
 }
+
 const AdminTabNavigator =({globalProps}:AdminTabProp)=>{
     const Tab = createBottomTabNavigator<AdminTabNavigatorList>(
     );
     return (
         <NavigationContainer>
-               <Tab.Navigator             
-                    screenOptions={({ route }) => ({
-                        tabBarLabel:route.name,
-                        tabBarIcon: ({ focused, color, size }) => {
-                        let iconName:string = '' ;
-            
-                        if (route.name === 'Home') {
-                            iconName = focused
-                            ? 'home'
-                            : 'home-outline';
-                        } else if (route.name === 'Category') {
-                            iconName = focused ? 'flower' : 'flower-outline';
-                        }
-            
-                        // You can return any component that you like here!
-                        return <Ionicons 
-                            name={iconName}
-                            size={focused?35:28} 
-                            color={color} 
-                        />;
-                        },
-                        tabBarActiveTintColor: 'tomato',
-                        tabBarInactiveTintColor: 'gray',
-                    })}
-                    >
+            <Tab.Navigator             
+                screenOptions={({ route }) => ({
+                    tabBarLabel:route.name,
+                    tabBarIcon: ({ focused, color, size }) => {
+                    let iconName:string = '' ;
+        
+                    if (route.name === 'Home') {
+                        iconName = focused
+                        ? 'home'
+                        : 'home-outline';
+                    } else if (route.name === 'Category') {
+                        iconName = focused ? 'flower' : 'flower-outline';
+                    }
+                    return <Ionicons 
+                        name={iconName}
+                        size={focused?35:28} 
+                        color={color} 
+                    />;
+                    },
+                    tabBarActiveTintColor: 'tomato',
+                    tabBarInactiveTintColor: 'gray',
+                })}
+            >
                 <Tab.Screen 
                     name="Home" 
-                    component={(props:NativeStackScreenProps<AdminTabNavigatorList>)=><HomeStackNavigation globalProps={globalProps}
-                    
-                    />} 
+                    component={(props:NativeStackScreenProps<AdminTabNavigatorList>)=><HomeStackNavigation globalProps={globalProps}/>}
                 />
                 <Tab.Screen name="Category" component={CategoryScreen} />
             </Tab.Navigator>

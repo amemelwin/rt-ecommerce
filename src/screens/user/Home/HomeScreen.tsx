@@ -1,11 +1,12 @@
 import { StyleSheet, Text, View } from "react-native";
 import { ScreenProps } from "../../../navigations/user-tab-navigation";
-const HomeScreen = ({navigation}:ScreenProps)=>{
+import { HomeTabScreenProps } from "../../../navigations/admin-tab-navigation/home-stack-navigation";
+const HomeScreen = ({navigation}:HomeTabScreenProps)=>{
     //    const navigation = useNavigation<Nav>();
     return (
         <View style={styles.container}>
             <Text>Home</Text>
-            <Text onPress={()=>navigation.navigate('Detail')}>Go to details</Text>
+            <Text onPress={()=>navigation.navigate("detail",{name: "Amie"})}>Go to details</Text>
         </View>
     )
 }

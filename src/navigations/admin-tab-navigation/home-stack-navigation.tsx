@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { NativeStackScreenProps, createNativeStackNavigator } from "@react-navigation/native-stack";
 import { GlobalProps } from "../../../App";
 import HomeScreen from "../../screens/admin/HomeScreen";
+import DetailScreen from "../../screens/user/Home/DetailScreen";
 export type HomeTabScreenProps = NativeStackScreenProps<HomeStackNavigatorList> & GlobalProps;
 export type HomeStackNavigatorList = {
     home: undefined;
@@ -14,22 +15,20 @@ type HomeStackProp = {
     globalProps : GlobalProps;
 }
 const HomeStackNavigation = ({globalProps}:HomeStackProp)=>{
-    const Stack = createNativeStackNavigator<HomeStackNavigatorList>();
+    // const Stack = createNativeStackNavigator<HomeStackNavigatorList>();
     const Tab = createBottomTabNavigator<HomeStackNavigatorList>();
 
-    return <NavigationContainer>
-        {/* <Tab.Navigator>
-        <Tab.Screen 
-                name = 'home'
-                component={(props:NativeStackScreenProps<HomeStackNavigatorList>)=><HomeScreen {...props} {...globalProps} />}
-        />
-        </Tab.Navigator> */}
-        <Stack.Navigator>
-            <Stack.Screen 
+    return <NavigationContainer independent>
+        <Tab.Navigator>
+            <Tab.Screen 
                 name = 'home'
                 component={(props:NativeStackScreenProps<HomeStackNavigatorList>)=><HomeScreen {...props} {...globalProps} />}
             />
-        </Stack.Navigator>
+            <Tab.Screen 
+                name = "detail"
+                component={(props:NativeStackScreenProps<HomeStackNavigatorList>)=><DetailScreen {...props} {...globalProps} />}
+            />
+        </Tab.Navigator>
     </NavigationContainer>
 }
 export default HomeStackNavigation;
