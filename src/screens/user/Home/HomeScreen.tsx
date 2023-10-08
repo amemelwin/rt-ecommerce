@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import { ScreenProps } from "../../../navigations/user-tab-navigation";
 import { HomeTabScreenProps } from "../../../navigations/admin-tab-navigation/home-stack-navigation";
-const HomeScreen = ({navigation}:HomeTabScreenProps)=>{
+const HomeScreen = ({navigation,globalTest}:HomeTabScreenProps)=>{
     //    const navigation = useNavigation<Nav>();
     return (
         <View style={styles.container}>
